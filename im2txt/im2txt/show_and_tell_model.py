@@ -61,7 +61,7 @@ class ShowAndTellModel(object):
         maxval=self.config.initializer_scale)
 
     # A float32 Tensor with shape [batch_size, height, width, channels].
-    self.images = None
+    # self.images = None
 
     # An int32 Tensor with shape [batch_size, padded_length].
     self.input_seqs = None
@@ -173,7 +173,7 @@ class ShowAndTellModel(object):
                                            batch_size=self.config.batch_size,
                                            queue_capacity=queue_capacity))
 
-    self.images = images
+    self.image_embeddings = image_embeddings
     self.input_seqs = input_seqs
     self.target_seqs = target_seqs
     self.input_mask = input_mask
@@ -351,7 +351,7 @@ class ShowAndTellModel(object):
   def build(self):
     """Creates all ops for training and evaluation."""
     self.build_inputs()
-    self.build_image_embeddings()
+    # self.build_image_embeddings()
     self.build_seq_embeddings()
     self.build_model()
     self.setup_inception_initializer()
